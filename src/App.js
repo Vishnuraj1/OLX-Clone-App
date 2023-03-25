@@ -7,12 +7,14 @@ import Login from './Components/Login/Login'
 import Create from './Pages/Create'
 import View from './Pages/ViewPost'
 import Post from './store/PostContext';
+import Profile from './Components/Profile/Profile';
 
 /**
  * ?  =====Import Components=====
  */
 import Home from './Pages/Home';
 import { AuthContext, FirebaseContext } from './store/FirebaseContext';
+
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
             <Route path='/Login' element={<Login />}> </Route>
             <Route path='/sell' element={<Create />}> </Route>
             <Route path='/view' element={<View />}> </Route>
+            <Route path='/profile' element={<Profile />}> </Route>
 
 
           </Routes>
