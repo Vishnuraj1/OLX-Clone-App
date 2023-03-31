@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import '../src/Fontawsome/Fontawsome'
 import './App.css';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
