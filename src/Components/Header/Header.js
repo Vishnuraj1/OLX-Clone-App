@@ -7,11 +7,31 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { AuthContext, FirebaseContext } from '../../store/FirebaseContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate,useEffect } from 'react-router-dom';
+import { UserContext } from '../../store/UserDetails';
+
 function Header() {
   const { user } = useContext(AuthContext)
   const { firebase } = useContext(FirebaseContext)
   const navigate = useNavigate()
+
+// useEffect(()=>{
+//   firebase.firestore().collection()
+// })
+
+  // const {UserDetails,setUserDetails} =useContext(UserContext)
+  
+  // useEffect(()=>{ 
+    
+  //   firebase.firestore().collection('users').where('id','==',val).get().then((res)=>{
+  //     res.forEach(doc=>{
+  //       setUserDetails(doc.data())
+  //     })
+  //   })
+  // },[])
+  // console.log(UserDetails)
+
+
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">

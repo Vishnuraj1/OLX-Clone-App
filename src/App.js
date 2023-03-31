@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import '../src/Fontawsome/Fontawsome'
+
 import './App.css';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -15,6 +15,7 @@ import Profile from './Components/Profile/Profile';
  */
 import Home from './Pages/Home';
 import { AuthContext, FirebaseContext } from './store/FirebaseContext';
+import UserDetails from './store/UserDetails';
 
 
 
@@ -28,25 +29,26 @@ function App() {
   })
   return (
     <div>
+      <UserDetails>
+        <Post>
 
-      <Post>
+          <Router>
+            <Routes>
 
-        <Router>
-          <Routes>
-
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/SignuP' element={<SignUp />}> </Route>
-            <Route path='/Login' element={<Login />}> </Route>
-            <Route path='/sell' element={<Create />}> </Route>
-            <Route path='/view' element={<View />}> </Route>
-            <Route path='/profile' element={<Profile />}> </Route>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='/SignuP' element={<SignUp />}> </Route>
+              <Route path='/Login' element={<Login />}> </Route>
+              <Route path='/sell' element={<Create />}> </Route>
+              <Route path='/view' element={<View />}> </Route>
+              <Route path='/profile' element={<Profile />}> </Route>
 
 
-          </Routes>
-        </Router>
+            </Routes>
+          </Router>
 
-      </Post>
-      
+        </Post>
+      </UserDetails>
+
     </div>
   );
 }
