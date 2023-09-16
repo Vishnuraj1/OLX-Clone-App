@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext,useEffect, useId } from 'react';
 
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
@@ -7,17 +7,40 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { AuthContext, FirebaseContext } from '../../store/FirebaseContext';
-import { Link, useNavigate,useEffect } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import { UserContext } from '../../store/UserDetails';
+
 
 function Header() {
   const { user } = useContext(AuthContext)
   const { firebase } = useContext(FirebaseContext)
   const navigate = useNavigate()
 
-// useEffect(()=>{
-//   firebase.firestore().collection()
-// })
+  const {UserDetails,setUserDetails} =useContext(UserContext)
+
+  useEffect(()=>{ 
+    
+    // firebase.firestore().collection('users').doc('9WrN5sM2DV3FPMiKRk1q').get().then((res)=>{
+    //   res.forEach(doc=>{
+    //     // setUserDetails(doc.data())
+    //     console.log(doc.data())
+    //   })
+    // })
+
+//     const auth = getAuth();
+// onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.User
+//     const uid = user.uid;
+//     // ...
+//   } else {
+//     // User is signed out
+//     // ...
+//   }
+// });
+
+  },[])
 
   // const {UserDetails,setUserDetails} =useContext(UserContext)
   
