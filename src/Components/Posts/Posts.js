@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {  json, useNavigate } from 'react-router-dom';
 
 import Heart from '../../assets/Heart';
 import { FirebaseContext } from '../../store/FirebaseContext';
@@ -19,10 +19,31 @@ function Posts() {
           id: product.id
         }
       })
-      console.log(allPosts)
-      setProducts(allPosts)
+      // console.log(allPosts)
+      
+      // const value = allPosts
+      // if (value){
+      //   localStorage.setItem("Name",JSON.stringify(value))}
+
+    setProducts(allPosts);
+
+ 
     })
-  },[ ])
+  }
+ 
+  ,[ firebase])
+  // useEffect(()=>{
+
+  //   const value = PostContext
+  //   if (value){
+  //     localStorage.setItem("Name",JSON.stringify(value))
+  //     var txt = JSON.parse(localStorage.getItem("Name"))
+  //     console.log(txt)
+  //   }
+  // })
+
+
+
 
   return (
     <div className="postParentDiv">
