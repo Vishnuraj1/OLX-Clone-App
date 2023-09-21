@@ -1,17 +1,35 @@
-import React, { useEffect, useContext, useState } from 'react';
-import {  json, useNavigate } from 'react-router-dom';
+import React, { useEffect, useContext,useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Heart from '../../assets/Heart';
 import { FirebaseContext } from '../../store/FirebaseContext';
 import { PostContext } from '../../store/PostContext';
+
+import { useSearch } from '../../store/SearchContext';
+
 import './Post.css';
 
 function Posts() {
+
   const { firebase } = useContext(FirebaseContext)
   const [Products, setProducts] = useState([])
   const {setPostDetails} =useContext(PostContext)
+
   const navigate = useNavigate()
+
+  //For Name searching
+  const { searchTerm } = useSearch();
+
   useEffect(() => {
+
+     // Retrieve data from local storage
+     const storedData = JSON.parse(localStorage.getItem('Olx-data'));
+
+     // Check if the data exists in local storage
+     if (storedData) {
+       setProducts(storedData);
+     }
+
     firebase.firestore().collection('olx-Products').get().then((snapshot) => {
       const allPosts = snapshot.docs.map((product) => {
         return {
@@ -19,30 +37,16 @@ function Posts() {
           id: product.id
         }
       })
-      // console.log(allPosts)
-      
-      // const value = allPosts
-      // if (value){
-      //   localStorage.setItem("Name",JSON.stringify(value))}
-
+    
     setProducts(allPosts);
 
+      // Save the fetched data to local storage
+      localStorage.setItem('Olx-data', JSON.stringify(allPosts));
  
     })
   }
  
   ,[ firebase])
-  // useEffect(()=>{
-
-  //   const value = PostContext
-  //   if (value){
-  //     localStorage.setItem("Name",JSON.stringify(value))
-  //     var txt = JSON.parse(localStorage.getItem("Name"))
-  //     console.log(txt)
-  //   }
-  // })
-
-
 
 
   return (
@@ -55,9 +59,16 @@ function Posts() {
 
         <div className="cards">
 
-          {Products.map(product => {
+          {Products.filter((product)=>{
+            if(searchTerm == ""){
+            return product;
+             }else if(product.Name.toLowerCase().includes(searchTerm.toLowerCase())){
+              return product;
+             }
+          }).map((product,index) => {
 
        return     <div
+       key={index}
               className="card"
               onClick={()=>{
                 setPostDetails(product)

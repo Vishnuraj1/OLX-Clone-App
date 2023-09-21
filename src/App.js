@@ -17,6 +17,9 @@ import Home from './Pages/Home';
 import { AuthContext, FirebaseContext } from './store/FirebaseContext';
 import UserDetails from './store/UserDetails';
 
+import OpenAIComponent from './Components/OpenAIComponent/OpenAIComponent';
+
+
 
 
 function App() {
@@ -29,6 +32,7 @@ function App() {
   })
   return (
     <div>
+      
       <UserDetails>
         <Post>
 
@@ -42,13 +46,12 @@ function App() {
               <Route path='/view' element={<View />}> </Route>
               <Route path='/profile' element={<Profile />}> </Route>
 
-
             </Routes>
           </Router>
 
         </Post>
       </UserDetails>
-
+      
     </div>
   );
 }

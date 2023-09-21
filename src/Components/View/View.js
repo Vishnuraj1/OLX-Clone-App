@@ -4,6 +4,7 @@ import { PostContext } from '../../store/PostContext';
 import { UserContext } from '../../store/UserDetails';
 
 import './View.css';
+import OpenAIComponent from '../OpenAIComponent/OpenAIComponent';
 function View() {
   const {UserDetails,setUserDetails} =useContext(UserContext)
   const {PostDetails} =useContext(PostContext)
@@ -15,7 +16,7 @@ var value = PostDetails
   if (value){
       localStorage.setItem("Name",JSON.stringify(value))}
       var txt = JSON.parse(localStorage.getItem('Name'))
-      console.log(txt)
+      // console.log(txt)
     
   
   if(value){ 
@@ -58,6 +59,7 @@ var value = PostDetails
      }  
 
       </div>
+      <OpenAIComponent/>
     </div>
   );
 }
